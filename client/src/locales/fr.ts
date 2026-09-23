@@ -20,6 +20,52 @@ export const fr: LocalePack = {
   done: "Terminé",
   contact: "Nous contacter",
   shareText: "Aidez-nous à comprendre comment les gens trouvent une aide du quotidien.",
+  landing: {
+    eyebrow: "Recherche anonyme",
+    headlineLead: "Aidez-nous à comprendre",
+    headlineMiddle: "comment les gens trouvent",
+    headlineAccent: "une aide du quotidien",
+    body: "Nous étudions comment les gens trouvent de l'aide pour les tâches du quotidien, et ce qui rend cette expérience plus simple, plus sûre et plus utile.",
+    questions: "5 questions",
+    noAccount: "Aucun compte requis",
+    anonymous: "Anonyme",
+    getStarted: "Commencer",
+    duration: "Environ 2 minutes.",
+    privacyTitle: "Votre vie privée compte",
+    privacyBody: "Aucune information personnelle n'est demandée.",
+    researchTitle: "Réponses utilisées uniquement pour la recherche",
+    researchBody: "Nous analysons les résultats dans leur ensemble.",
+    lifeTitle: "Un quotidien plus simple",
+    lifeBody: "Vos réponses nous aident à comprendre les vrais besoins.",
+    footerPrivacy: "Confidentialité",
+    footerPurpose: "Objectif de la recherche",
+    footerContact: "Contact",
+    privacyPageTitle: "Confidentialité",
+    privacy1:
+      "Ce questionnaire est anonyme et ne demande ni votre nom, ni votre adresse e-mail, ni votre numéro de téléphone, ni les détails d'un compte.",
+    privacy2:
+      "Vos réponses sont enregistrées sans information qui vous identifie directement et sont utilisées uniquement pour la recherche et le développement du produit.",
+    privacy3:
+      "Si vous choisissez « Autre », décrivez le type d'aide ou la situation, sans inclure d'informations personnelles ou sensibles.",
+    privacy4:
+      "Nous pouvons collecter des informations techniques limitées, comme la langue choisie, le type d'appareil, le type de navigateur et les données de complétion du questionnaire, afin de comprendre son usage et d'améliorer l'expérience.",
+    privacy5:
+      "Les réponses sont analysées de façon agrégée. Elles ne sont pas vendues à des tiers et ne sont pas utilisées pour la publicité.",
+    privacy6:
+      "En envoyant le questionnaire, vous acceptez que vos réponses anonymes puissent servir à la recherche, à l'analyse et au développement du service.",
+    purposePageTitle: "Objectif de la recherche",
+    purpose1:
+      "Nous étudions comment les gens trouvent aujourd'hui de l'aide pour les besoins du quotidien, et ce qui rend cette démarche plus simple, plus sûre, plus rapide et plus fiable.",
+    purpose2:
+      "Dans le cadre de cette recherche, nous développons une nouvelle application destinée à mettre en relation les personnes qui ont besoin d'une aide du quotidien avec des personnes de leur communauté disponibles pour la fournir.",
+    purpose3:
+      "L'objectif est de créer un lieu communautaire où l'on peut trouver une aide fiable pour le ménage, la cuisine, la garde d'enfants, les livraisons, l'entretien de la maison, l'aide technique, les courses et d'autres tâches du quotidien.",
+    purpose4:
+      "Le service pourra permettre de découvrir des personnes à proximité, de publier un besoin, de recevoir des réponses, de comparer des profils adaptés, de communiquer directement et de choisir en connaissance de cause grâce aux avis, à la disponibilité, à l'expérience et à la vérification.",
+    purpose5:
+      "Ce questionnaire nous aide à comprendre quels besoins comptent le plus, comment les gens les résolvent aujourd'hui, ce qui crée la confiance, et quelles façons de trouver de l'aide semblent les plus utiles.",
+    purpose6: "Il y a 5 questions et le questionnaire prend environ 1 à 2 minutes.",
+  },
   questions: {
     categories: {
       title: "Quel type d'aide utiliseriez-vous vraiment ?",

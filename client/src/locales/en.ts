@@ -18,6 +18,51 @@ export const en = {
   done: "Done",
   contact: "Contact us",
   shareText: "Help us understand how people find everyday help.",
+  landing: {
+    eyebrow: "Anonymous research",
+    headlineLead: "Help us understand",
+    headlineMiddle: "how people find",
+    headlineAccent: "everyday help",
+    body: "We are researching how people find help for everyday tasks and what makes the experience easier, safer and more useful.",
+    questions: "5 questions",
+    noAccount: "No account required",
+    anonymous: "Anonymous",
+    getStarted: "Get started",
+    duration: "Takes about 2 minutes.",
+    privacyTitle: "Your privacy matters",
+    privacyBody: "No personal information is required.",
+    researchTitle: "Responses used for research only",
+    researchBody: "We analyze results in aggregate.",
+    lifeTitle: "A better everyday life",
+    lifeBody: "Your input helps us understand real needs.",
+    footerPrivacy: "Privacy",
+    footerPurpose: "Research purpose",
+    footerContact: "Contact",
+    privacyPageTitle: "Privacy",
+    privacy1:
+      "This survey is anonymous and does not ask for your name, email address, phone number, or account details.",
+    privacy2:
+      "Your responses are stored without information that directly identifies you and are used only for research and product development purposes.",
+    privacy3:
+      "If you choose “Other,” please describe the type of help or situation rather than including personal or sensitive information.",
+    privacy4:
+      "We may collect limited technical information, such as your selected language, device type, browser type, and survey completion data, in order to understand how the questionnaire is used and improve the experience.",
+    privacy5: "Survey responses are analyzed in aggregate. They are not sold to third parties or used for advertising.",
+    privacy6:
+      "By submitting the questionnaire, you agree that your anonymous responses may be used to support research, analysis, and the development of the service.",
+    purposePageTitle: "Research purpose",
+    purpose1:
+      "We are researching how people currently find help for everyday needs and what makes that process easier, safer, faster, and more trustworthy.",
+    purpose2:
+      "As part of this research, we are developing a new application designed to connect people who need everyday help with people in their community who are available to provide it.",
+    purpose3:
+      "The goal is to create a community hub where people can find reliable help for needs such as cleaning, cooking, childcare, deliveries, home maintenance, technical assistance, errands, and other everyday tasks.",
+    purpose4:
+      "The service may allow people to discover nearby helpers, post what they need, receive responses, compare suitable people, communicate directly, and make informed choices based on information such as reviews, availability, experience, and verification.",
+    purpose5:
+      "This questionnaire helps us understand which needs are most important, how people currently solve them, what creates trust, and which ways of finding help feel most useful.",
+    purpose6: "There are 5 questions and the survey takes about 1-2 minutes.",
+  },
   questions: {
     categories: {
       title: "What kind of help would you actually use?",

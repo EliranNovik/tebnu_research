@@ -191,12 +191,23 @@
   transition: background var(--transition-fast) ease, transform var(--transition-fast) ease;
 }
 
-.btn-primary:hover {
+.btn-primary:hover:not(.btn-cta) {
   background: linear-gradient(90deg, #7430ff, #914bff);
 }
 
 .btn-cta {
-  background: linear-gradient(90deg, #6400fc, #df3f8f);
+  background-image: linear-gradient(100deg, #6400fc 0%, #8a3cff 28%, #df3f8f 52%, #7430ff 76%, #6400fc 100%);
+  background-size: 240% 100%;
+  animation: cta-shift 5.5s ease-in-out infinite;
+  transition: transform var(--transition-fast) ease;
+}
+
+.btn-cta:hover {
+  animation-duration: 3s;
+}
+
+.cta-arrow {
+  animation: cta-arrow 1.35s ease-in-out infinite;
 }
 
 .btn-secondary {
@@ -227,6 +238,28 @@
   }
 }
 
+@keyframes cta-arrow {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.28);
+  }
+}
+
+@keyframes cta-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 @keyframes question-in {
   from {
     opacity: 0;
@@ -240,7 +273,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .float-illustration,
-  .question-enter {
+  .question-enter,
+  .btn-cta,
+  .cta-arrow {
     animation: none;
   }
 }
