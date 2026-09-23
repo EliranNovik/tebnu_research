@@ -3,10 +3,11 @@ import { useLayoutEffect, useRef } from "react";
 
 type OtherInputProps = {
   value: string;
+  placeholder: string;
   onChange: (value: string) => void;
 };
 
-export function OtherInput({ value, onChange }: OtherInputProps) {
+export function OtherInput({ value, placeholder, onChange }: OtherInputProps) {
   const ref = useRef<HTMLTextAreaElement>(null);
 
   useLayoutEffect(() => {
@@ -17,13 +18,13 @@ export function OtherInput({ value, onChange }: OtherInputProps) {
   }, [value]);
 
   return (
-    <div className="pl-9">
+    <div className="ps-9">
       <textarea
         ref={ref}
         value={value}
         rows={1}
         maxLength={300}
-        placeholder="Tell us more..."
+        placeholder={placeholder}
         onChange={(event) => onChange(event.target.value.slice(0, 300))}
         className={cn(
           "min-h-12 w-full resize-none overflow-hidden rounded-xl border border-white/15 bg-white/[0.06] px-3 py-3 text-base text-white placeholder:text-white/45",

@@ -12,7 +12,7 @@ export const emptyAnswers: SurveyAnswers = {
 
 export type SurveyContextValue = {
   answers: SurveyAnswers;
-  toggleOption: (questionId: QuestionId, value: string) => { blocked?: string };
+  toggleOption: (questionId: QuestionId, value: string) => { blocked?: boolean };
   setOtherText: (questionId: QuestionId, value: string) => void;
   reset: () => void;
 };
@@ -29,7 +29,7 @@ export function applyToggle(
   answers: SurveyAnswers,
   questionId: QuestionId,
   value: string,
-): { next: SurveyAnswers; blocked?: string } {
+): { next: SurveyAnswers; blocked?: boolean } {
   const question = getQuestion(questionId);
   const fields = QUESTION_FIELD_MAP[questionId];
   const selected = [...(answers[fields.answers] as string[])];
@@ -61,7 +61,7 @@ export function applyToggle(
   let nextSelected = exclusiveValue ? selected.filter((item) => item !== exclusiveValue) : selected;
 
   if (question.maxSelections && nextSelected.length >= question.maxSelections) {
-    return { next: answers, blocked: `You can choose up to ${question.maxSelections}.` };
+    return { next: answers, blocked: true };
   }
 
   nextSelected = [...nextSelected, value];

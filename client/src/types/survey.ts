@@ -7,5 +7,6 @@ export type {
   ResponsesListResponse,
   SurveyAnswers,
   SurveyEventName,
+  SurveyLanguage,
   SurveyResponseDoc,
 } from "@shared/types";

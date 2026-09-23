@@ -5,6 +5,7 @@ import type {
   ResponsesListResponse,
   SurveyAnswers,
   SurveyEventName,
+  SurveyLanguage,
   SurveyResponseDoc,
   QuestionId,
 } from "@/types/survey";
@@ -34,12 +35,13 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   return (await response.json()) as T;
 }
 
-export async function submitSurvey(answers: SurveyAnswers) {
+export async function submitSurvey(answers: SurveyAnswers, language: SurveyLanguage) {
   return request<{ ok: true; id: string }>("/api/survey", {
     method: "POST",
     body: JSON.stringify({
       answers,
       questionnaireVersion: QUESTIONNAIRE_VERSION,
+      language,
     }),
   });
 }

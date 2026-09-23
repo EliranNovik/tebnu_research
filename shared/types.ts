@@ -1,6 +1,13 @@
 export const QUESTIONNAIRE_VERSION = "1.0" as const;
 export type QuestionnaireVersion = typeof QUESTIONNAIRE_VERSION;
 
+export const SURVEY_LANGUAGES = ["en", "ru", "fr", "he"] as const;
+export type SurveyLanguage = (typeof SURVEY_LANGUAGES)[number];
+
+export function isSurveyLanguage(value: string | null | undefined): value is SurveyLanguage {
+  return value === "en" || value === "ru" || value === "fr" || value === "he";
+}
+
 export type QuestionId =
   | "categories"
   | "currentMethod"
@@ -26,6 +33,7 @@ export type SurveyAnswers = {
 export type SurveySubmitRequest = {
   answers: SurveyAnswers;
   questionnaireVersion: QuestionnaireVersion;
+  language?: SurveyLanguage;
 };
 
 export type SurveySubmitResponse = {
@@ -98,7 +106,7 @@ export type SurveyResponseDoc = {
   metadata: {
     submittedAt: string;
     questionnaireVersion: QuestionnaireVersion;
-    language: "en";
+    language: SurveyLanguage;
     deviceType?: DeviceType;
     userAgent?: string;
   };

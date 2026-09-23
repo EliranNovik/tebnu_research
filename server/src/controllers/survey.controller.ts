@@ -18,6 +18,7 @@ export async function submitSurvey(req: Request, res: Response) {
   const id = await saveSurveyResponse({
     answers: parsed.data.answers,
     questionnaireVersion: parsed.data.questionnaireVersion,
+    language: parsed.data.language,
     userAgent: typeof req.headers["user-agent"] === "string" ? req.headers["user-agent"] : undefined,
   });
 

@@ -6,8 +6,10 @@ import type {
   OverviewResponse,
   QuestionId,
   ResponsesListResponse,
+  SurveyLanguage,
   SurveyResponseDoc,
 } from "../../../shared/types";
+import { isSurveyLanguage } from "../../../shared/types";
 import { getSupabase } from "./supabase";
 import {
   getMemoryResponse,
@@ -42,7 +44,7 @@ type StoredResponse = {
   metadata: {
     submittedAt?: { toDate?: () => Date } | Date | string;
     questionnaireVersion: "1.0";
-    language: "en";
+    language: SurveyLanguage;
     deviceType?: "mobile" | "tablet" | "desktop";
     userAgent?: string | null;
   };
@@ -66,7 +68,7 @@ type ResponseRow = {
   id: string;
   answers: StoredResponse["answers"];
   questionnaire_version: "1.0";
-  language: "en";
+  language: string | null;
   device_type?: "mobile" | "tablet" | "desktop" | null;
   user_agent?: string | null;
   submitted_at: string;
@@ -85,7 +87,7 @@ function rowToStored(row: ResponseRow): StoredResponse {
     metadata: {
       submittedAt: row.submitted_at,
       questionnaireVersion: row.questionnaire_version,
-      language: "en",
+      language: isSurveyLanguage(row.language) ? row.language : "en",
       deviceType: row.device_type ?? undefined,
       userAgent: row.user_agent,
     },
@@ -179,7 +181,7 @@ function toPublicDoc(doc: StoredResponse): SurveyResponseDoc {
     metadata: {
       submittedAt: toIso(doc.metadata.submittedAt),
       questionnaireVersion: doc.metadata.questionnaireVersion,
-      language: "en",
+      language: doc.metadata.language,
       deviceType: doc.metadata.deviceType,
       userAgent: doc.metadata.userAgent ?? undefined,
     },

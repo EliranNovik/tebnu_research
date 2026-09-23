@@ -1,4 +1,4 @@
-import type { SurveyAnswers } from "../../../shared/types";
+import type { SurveyAnswers, SurveyLanguage } from "../../../shared/types";
 import { deviceTypeFromUserAgent } from "../utils/sanitize";
 import { notifyAdminChange } from "./live";
 import { isSupabaseConfigured } from "./store";
@@ -8,6 +8,7 @@ import { addMemoryEvent, addMemoryResponse } from "./store";
 export async function saveSurveyResponse(input: {
   answers: SurveyAnswers;
   questionnaireVersion: "1.0";
+  language: SurveyLanguage;
   userAgent?: string;
 }) {
   const answers = {
@@ -29,7 +30,7 @@ export async function saveSurveyResponse(input: {
       metadata: {
         submittedAt: new Date(),
         questionnaireVersion: input.questionnaireVersion,
-        language: "en",
+        language: input.language,
         deviceType: deviceTypeFromUserAgent(input.userAgent),
         userAgent: input.userAgent?.slice(0, 300) ?? null,
       },
@@ -43,7 +44,7 @@ export async function saveSurveyResponse(input: {
     .insert({
       answers,
       questionnaire_version: input.questionnaireVersion,
-      language: "en",
+      language: input.language,
       device_type: deviceTypeFromUserAgent(input.userAgent),
       user_agent: input.userAgent?.slice(0, 300) ?? null,
     })

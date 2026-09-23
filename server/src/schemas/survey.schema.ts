@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { questionnaire } from "../../../shared/questionnaire";
-import { QUESTIONNAIRE_VERSION, type QuestionId } from "../../../shared/types";
+import { QUESTIONNAIRE_VERSION, SURVEY_LANGUAGES, type QuestionId } from "../../../shared/types";
 import { sanitizeOtherText } from "../utils/sanitize";
 
 const OTHER_MAX = 300;
@@ -40,6 +40,7 @@ function validateQuestion(questionId: QuestionId, values: string[], other?: stri
 export const surveySubmitSchema = z
   .object({
     questionnaireVersion: z.literal(QUESTIONNAIRE_VERSION),
+    language: z.enum(SURVEY_LANGUAGES).default("en"),
     answers: z.object({
       categories: z.array(z.string()),
       categoriesOther: z.string().max(OTHER_MAX).optional(),
@@ -71,6 +72,7 @@ export const surveySubmitSchema = z
   })
   .transform((payload) => ({
     questionnaireVersion: payload.questionnaireVersion,
+    language: payload.language,
     answers: {
       ...payload.answers,
       categoriesOther: sanitizeOtherText(payload.answers.categoriesOther),

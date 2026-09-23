@@ -1,4 +1,5 @@
 import { randomUUID } from "node:crypto";
+import type { SurveyLanguage } from "../../../shared/types";
 
 export type StoredResponse = {
   id: string;
@@ -17,7 +18,7 @@ export type StoredResponse = {
   metadata: {
     submittedAt: Date;
     questionnaireVersion: "1.0";
-    language: "en";
+    language: SurveyLanguage;
     deviceType?: "mobile" | "tablet" | "desktop";
     userAgent?: string | null;
   };
