@@ -40,8 +40,8 @@ export function QuestionLayout({
     <div className="question-enter mx-auto w-full">
       <ProgressHeader label={progressLabel} current={index + 1} total={total} rtl={rtl} />
       <div className="mb-10 flex items-start gap-3">
-        <div className="mt-1 flex size-10 shrink-0 items-center justify-center rounded-2xl bg-white/6 text-[#A993EB]">
-          <Icon className="size-5" />
+        <div className="mt-0.5 flex size-12 shrink-0 items-center justify-center rounded-2xl bg-white/6 text-[#A993EB]">
+          <Icon className="size-7" />
         </div>
         <div>
           <h1 className="text-[26px] font-bold leading-tight text-white md:text-[30px]">{title}</h1>

@@ -1,5 +1,6 @@
 import { HeroIllustration } from "@/components/illustrations/HeroIllustration";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { ShareLinkButton } from "@/components/ShareLinkButton";
 import { Button } from "@/components/ui/button";
 import { useSurveyLanguage } from "@/hooks/useSurveyLanguage";
 import { trackEvent } from "@/services/api";
@@ -52,7 +53,10 @@ export function LandingPage() {
 
   return (
     <div className="survey-shell" lang={language} dir={language === "he" ? "rtl" : "ltr"}>
-      <LanguageSwitcher value={language} onChange={selectLanguage} />
+      <div dir="ltr" className="absolute top-5 right-5 z-30 flex items-center gap-2 md:top-6 md:right-10">
+        <ShareLinkButton text={copy.shareText} label={copy.share} copiedLabel={copy.linkCopied} />
+        <LanguageSwitcher value={language} onChange={selectLanguage} />
+      </div>
       <div className="absolute top-5 left-5 z-30 flex items-center gap-2.5 md:top-6 md:left-10">
         <ResearchMark />
         <p className="text-[12px] font-semibold tracking-[0.16em] text-[#C9BDE8] uppercase">Everyday help research</p>
@@ -72,7 +76,7 @@ export function LandingPage() {
             <div className="mt-8">
             <div className="mb-8 flex flex-wrap items-center text-[15px] font-medium text-[#D4CBEE]">
               {surveyFacts.map((fact, index) => (
-                <span key={fact.key} className="flex items-center">
+                <span key={fact.key} className={fact.key === "noAccount" ? "hidden items-center md:flex" : "flex items-center"}>
                   {index > 0 ? (
                     <span aria-hidden="true" className="mx-3 text-white/35">
                       |

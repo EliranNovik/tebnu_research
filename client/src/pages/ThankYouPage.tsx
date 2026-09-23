@@ -1,17 +1,18 @@
 import { HeroIllustration } from "@/components/illustrations/HeroIllustration";
 import { SuccessIllustration } from "@/components/illustrations/SuccessIllustration";
 import { Button } from "@/components/ui/button";
+import { useShareSurvey } from "@/hooks/useShareSurvey";
 import { packFor, readLanguage } from "@/locales";
 import { Mail, Share2 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const contactEmail = "mailto:info@tebnu.com";
 
 export function ThankYouPage() {
-  const [copied, setCopied] = useState(false);
   const language = readLanguage() ?? "en";
   const copy = packFor(language);
+  const { share, copied } = useShareSurvey(copy.shareText);
 
   useEffect(() => {
     const previousLang = document.documentElement.lang;
@@ -23,24 +24,6 @@ export function ThankYouPage() {
       document.documentElement.dir = previousDir || "ltr";
     };
   }, [language]);
-
-  async function shareSurvey() {
-    const url = window.location.origin;
-    const payload = { title: "Tebnu", text: copy.shareText, url };
-
-    if (typeof navigator.share === "function" && (navigator.canShare?.(payload) ?? true)) {
-      try {
-        await navigator.share(payload);
-      } catch (error) {
-        if (error instanceof DOMException && error.name === "AbortError") return;
-      }
-      return;
-    }
-
-    await navigator.clipboard.writeText(url);
-    setCopied(true);
-    window.setTimeout(() => setCopied(false), 2500);
-  }
 
   return (
     <div className="survey-shell" lang={language} dir={language === "he" ? "rtl" : "ltr"}>
@@ -54,7 +37,7 @@ export function ThankYouPage() {
             <div className="flex items-center justify-center gap-3">
               <Button
                 type="button"
-                onClick={() => void shareSurvey()}
+                onClick={() => void share()}
                 className="btn-secondary h-12 min-w-36 rounded-[14px] px-6 font-semibold text-white"
               >
                 <Share2 className="size-4" />

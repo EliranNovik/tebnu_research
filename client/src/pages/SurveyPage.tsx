@@ -196,7 +196,10 @@ export function SurveyPage() {
               if (step > 0) setStep((value) => value - 1);
               else setStage("language");
             }}
-            className="btn-secondary h-11 min-h-11 min-w-44 !rounded-full border-white/14 bg-transparent px-10 text-white hover:bg-white/5"
+            className={cn(
+              "btn-secondary min-w-44 !rounded-full border-white/14 bg-transparent px-10 !font-semibold text-white hover:bg-white/5",
+              stage === "questions" ? "h-14 min-h-14 !text-lg" : "h-11 min-h-11 !text-base",
+            )}
           >
             {copy.back}
           </Button>
@@ -204,7 +207,10 @@ export function SurveyPage() {
             type="button"
             onClick={stage === "language" ? beginQuestions : goNext}
             disabled={submitting || (stage === "language" && !language)}
-            className="btn-primary h-11 min-h-11 min-w-44 !rounded-full px-10 text-base font-semibold text-white"
+            className={cn(
+              "btn-primary min-w-44 !rounded-full px-10 font-semibold text-white",
+              stage === "questions" ? "h-14 min-h-14 !text-lg" : "h-11 min-h-11 !text-base",
+            )}
           >
             {stage === "language"
               ? copy.continue

@@ -33,7 +33,9 @@ export function InfoPage({
 }: InfoPageProps) {
   return (
     <div className="survey-shell" lang={language} dir={language === "he" ? "rtl" : "ltr"}>
-      <LanguageSwitcher value={language} onChange={onLanguage} />
+      <div className="absolute top-5 right-5 z-30 md:top-6 md:right-10">
+        <LanguageSwitcher value={language} onChange={onLanguage} />
+      </div>
       <Link
         to="/"
         className="absolute top-5 left-5 z-30 inline-flex h-11 items-center gap-2 rounded-full border border-white/15 bg-white/6 px-4 text-sm font-semibold text-white hover:bg-white/10 md:top-6 md:left-10"

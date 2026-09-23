@@ -23,7 +23,7 @@ export function LanguageSwitcher({ value, onChange }: LanguageSwitcherProps) {
   }, []);
 
   return (
-    <div ref={rootRef} className="absolute top-5 right-5 z-30 md:top-6 md:right-10">
+    <div ref={rootRef} className="relative">
       <button
         type="button"
         aria-expanded={open}
