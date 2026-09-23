@@ -13,7 +13,11 @@ const port = Number(process.env.PORT ?? 4000);
 const origin = process.env.CLIENT_ORIGIN ?? "http://localhost:5173,http://localhost:5174,http://localhost:5175";
 
 app.set("trust proxy", 1);
-app.use(helmet());
+app.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+  }),
+);
 app.use(
   cors({
     origin: origin.split(",").map((value) => value.trim()),
@@ -34,8 +38,14 @@ app.use((error: unknown, _req: express.Request, res: express.Response, _next: ex
   res.status(500).json({ error: "Something went wrong" });
 });
 
-app.listen(port, () => {
-  const mode = process.env.SUPABASE_URL ? "Supabase" : "local memory store";
-  console.log(`Tebnu API listening on http://localhost:${port} (${mode})`);
+export default app;
+
+if (process.env.VERCEL) {
   startAdminRealtime();
-});
+} else {
+  app.listen(port, () => {
+    const mode = process.env.SUPABASE_URL ? "Supabase" : "local memory store";
+    console.log(`Tebnu API listening on http://localhost:${port} (${mode})`);
+    startAdminRealtime();
+  });
+}
