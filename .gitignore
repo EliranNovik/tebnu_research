@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build
+dist/
+client/dist/
+server/dist/
+
+# Environment
+.env
+.env.local
+.env.*.local
+client/.env
+client/.env.local
+server/.env
+
+# Firebase service account keys
+*-firebase-adminsdk-*.json
+serviceAccount*.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+
+# TypeScript
+*.tsbuildinfo
+
+# Supabase CLI cache
+supabase/.temp/

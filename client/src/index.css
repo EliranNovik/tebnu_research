@@ -1,0 +1,242 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #200d56;
+  --background-secondary: #29106a;
+  --primary: #6400fc;
+  --primary-hover: #7430ff;
+  --primary-light: #8a63ff;
+  --accent-pink: #df3f8f;
+  --accent-pink-hover: #ec5aa1;
+  --lavender: #7655c9;
+  --lavender-light: #a993eb;
+  --foreground: #ffffff;
+  --foreground-muted: #d9d2ec;
+  --card: #2b1468;
+  --card-hover: #351a7a;
+  --card-selected: #43218c;
+  --border: #5f38b8;
+  --border-active: #865bff;
+  --success: #56d6a9;
+  --error: #ff6b81;
+
+  --popover: #2b1468;
+  --popover-foreground: #ffffff;
+  --primary-foreground: #ffffff;
+  --secondary: #351a7a;
+  --secondary-foreground: #ffffff;
+  --muted: #351a7a;
+  --muted-foreground: #d9d2ec;
+  --accent: #df3f8f;
+  --accent-foreground: #ffffff;
+  --destructive: #ff6b81;
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: #865bff;
+  --chart-1: #6400fc;
+  --chart-2: #df3f8f;
+  --chart-3: #7655c9;
+  --chart-4: #34bfa3;
+  --chart-5: #4b8df8;
+  --chart-6: #f4a340;
+
+  --radius: 0.9rem;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --transition-fast: 150ms;
+  --transition-normal: 250ms;
+  --content-width: 760px;
+
+  --sidebar: #200d56;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #6400fc;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #351a7a;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: rgba(138, 99, 255, 0.25);
+  --sidebar-ring: #865bff;
+}
+
+.admin-root {
+  --background: #f7f7fa;
+  --foreground: #1a1430;
+  --card: #ffffff;
+  --card-foreground: #1a1430;
+  --popover: #ffffff;
+  --popover-foreground: #1a1430;
+  --primary: #6400fc;
+  --primary-foreground: #ffffff;
+  --secondary: #efeafb;
+  --secondary-foreground: #2b1468;
+  --muted: #f0eef6;
+  --muted-foreground: #6b6280;
+  --accent: #efeafb;
+  --accent-foreground: #2b1468;
+  --destructive: #e11d48;
+  --border: #ececf2;
+  --input: #ececf2;
+  --ring: #6400fc;
+  --foreground-muted: #6b6280;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground, var(--foreground));
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-chart-6: var(--chart-6);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-pink: var(--accent-pink);
+  --color-lavender: var(--lavender);
+  --color-lavender-light: var(--lavender-light);
+  --color-success: var(--success);
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: 1.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    margin: 0;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+.survey-shell {
+  min-height: 100svh;
+  background:
+    radial-gradient(circle at top right, rgba(100, 0, 252, 0.22), transparent 35%),
+    linear-gradient(135deg, #200d56 0%, #29106a 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.survey-shell::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 12% 22%, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    radial-gradient(circle at 78% 68%, rgba(255, 255, 255, 0.07) 1.5px, transparent 1.5px),
+    radial-gradient(circle at 40% 80%, rgba(223, 63, 143, 0.12) 2px, transparent 2px);
+  background-size: 80px 80px, 120px 120px, 90px 90px;
+  opacity: 0.7;
+}
+
+.survey-panel {
+  background: rgba(43, 20, 104, 0.75);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(138, 99, 255, 0.25);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #6400fc, #7c34ff);
+  color: white;
+  min-height: 44px;
+  transition: background var(--transition-fast) ease, transform var(--transition-fast) ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, #7430ff, #914bff);
+}
+
+.btn-cta {
+  background: linear-gradient(90deg, #6400fc, #df3f8f);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--foreground-muted);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.float-illustration {
+  animation: float-y 4.5s ease-in-out infinite;
+}
+
+.question-enter {
+  animation: question-in 300ms ease-out;
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes question-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-illustration,
+  .question-enter {
+    animation: none;
+  }
+}
