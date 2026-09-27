@@ -154,6 +154,12 @@
   }
 }
 
+@media (max-width: 767px) {
+  [data-sonner-toaster][data-y-position="top"] {
+    top: max(6.75rem, calc(env(safe-area-inset-top) + 5.75rem)) !important;
+  }
+}
+
 .survey-shell {
   min-height: 100svh;
   background:

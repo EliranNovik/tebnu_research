@@ -48,7 +48,7 @@ export function QuestionLayout({
           {subtitle ? (
             <p className="mt-2 text-sm text-[#D9D2EC]">
               {subtitle}
-              {selectionText ? <span className="ms-2 text-[#A993EB]">{selectionText}</span> : null}
+              {selectionText ? <span className="ms-2 hidden text-[#A993EB] md:inline">{selectionText}</span> : null}
             </p>
           ) : null}
         </div>

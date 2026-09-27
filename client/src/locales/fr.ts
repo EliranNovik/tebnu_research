@@ -8,6 +8,7 @@ export const fr: LocalePack = {
   submitting: "Envoi...",
   questionOf: "Question {current} sur {total}",
   selected: "{count} sélectionné(s)",
+  selectedOf: "{count} sur {max}",
   selectedMax: "{max} sur {max} sélectionnés",
   pleaseChoose: "Veuillez choisir au moins une réponse.",
   otherPlaceholder: "Dites-nous en plus...",
@@ -69,7 +70,7 @@ export const fr: LocalePack = {
   questions: {
     categories: {
       title: "Quel type d'aide utiliseriez-vous vraiment ?",
-      subtitle: "Choisissez-en jusqu'à 3.",
+      subtitle: "Choisissez-en jusqu'à 6.",
       options: {
         cleaning: { label: "Ménage" },
         cooking: { label: "Cuisine" },
@@ -106,7 +107,7 @@ export const fr: LocalePack = {
     },
     preferredDiscovery: {
       title: "Si vous aviez besoin d'aide, comment préféreriez-vous trouver la bonne personne ?",
-      subtitle: "Choisissez-en jusqu'à 3.",
+      subtitle: "Choisissez-en jusqu'à 5.",
       options: {
         browse_yourself: {
           label: "Chercher et parcourir les profils vous-même",
@@ -149,7 +150,7 @@ export const fr: LocalePack = {
     },
     trustFactors: {
       title: "Qu'est-ce qui vous ferait assez confiance à quelqu'un pour l'engager ?",
-      subtitle: "Choisissez-en jusqu'à 3.",
+      subtitle: "Choisissez-en jusqu'à 4.",
       options: {
         reviews: { label: "Avis" },
         verified_identity: { label: "Identité vérifiée" },
@@ -164,7 +165,7 @@ export const fr: LocalePack = {
     },
     barriers: {
       title: "Quelle est la principale raison pour laquelle vous ne demandez parfois pas d'aide ?",
-      subtitle: "Choisissez-en jusqu'à 2.",
+      subtitle: "Choisissez-en jusqu'à 4.",
       options: {
         dont_know_trust: { label: "Je ne sais pas à qui faire confiance" },
         too_expensive: { label: "C'est trop cher" },

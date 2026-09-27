@@ -23,9 +23,9 @@ export const questionnaire: QuestionConfig[] = [
   {
     id: "categories",
     type: "multiple",
-    maxSelections: 3,
+    maxSelections: 6,
     title: "What kind of help would you actually use?",
-    subtitle: "Choose up to 3.",
+    subtitle: "Choose up to 6.",
     icon: "sparkles",
     layout: "compact",
     options: [
@@ -68,9 +68,9 @@ export const questionnaire: QuestionConfig[] = [
   {
     id: "preferredDiscovery",
     type: "multiple",
-    maxSelections: 3,
+    maxSelections: 5,
     title: "If you needed help with something, how would you prefer to find the right person?",
-    subtitle: "Choose up to 3.",
+    subtitle: "Choose up to 5.",
     icon: "users",
     layout: "detailed",
     options: [
@@ -125,9 +125,9 @@ export const questionnaire: QuestionConfig[] = [
   {
     id: "trustFactors",
     type: "multiple",
-    maxSelections: 3,
+    maxSelections: 4,
     title: "What would make you trust someone enough to hire them?",
-    subtitle: "Choose up to 3.",
+    subtitle: "Choose up to 4.",
     icon: "shield",
     layout: "compact",
     options: [
@@ -145,9 +145,9 @@ export const questionnaire: QuestionConfig[] = [
   {
     id: "barriers",
     type: "multiple",
-    maxSelections: 2,
+    maxSelections: 4,
     title: "What is the biggest reason you sometimes don't ask someone for help?",
-    subtitle: "Choose up to 2.",
+    subtitle: "Choose up to 4.",
     icon: "help",
     layout: "compact",
     options: [

@@ -8,6 +8,7 @@ export const he: LocalePack = {
   submitting: "שולח...",
   questionOf: "שאלה {current} מתוך {total}",
   selected: "{count} נבחרו",
+  selectedOf: "{count} מתוך {max}",
   selectedMax: "{max} מתוך {max} נבחרו",
   pleaseChoose: "בחרו לפחות תשובה אחת.",
   otherPlaceholder: "ספרו לנו עוד...",
@@ -62,7 +63,7 @@ export const he: LocalePack = {
   questions: {
     categories: {
       title: "באיזה סוג עזרה הייתם באמת משתמשים?",
-      subtitle: "אפשר לבחור עד 3.",
+      subtitle: "אפשר לבחור עד 6.",
       options: {
         cleaning: { label: "ניקיון" },
         cooking: { label: "בישול" },
@@ -99,7 +100,7 @@ export const he: LocalePack = {
     },
     preferredDiscovery: {
       title: "אם הייתם צריכים עזרה, איך הייתם מעדיפים למצוא את האדם הנכון?",
-      subtitle: "אפשר לבחור עד 3.",
+      subtitle: "אפשר לבחור עד 5.",
       options: {
         browse_yourself: {
           label: "לחפש ולעיין באנשים בעצמכם",
@@ -142,7 +143,7 @@ export const he: LocalePack = {
     },
     trustFactors: {
       title: "מה היה גורם לכם לסמוך על מישהו מספיק כדי להזמין אותו?",
-      subtitle: "אפשר לבחור עד 3.",
+      subtitle: "אפשר לבחור עד 4.",
       options: {
         reviews: { label: "ביקורות" },
         verified_identity: { label: "זהות מאומתת" },
@@ -157,7 +158,7 @@ export const he: LocalePack = {
     },
     barriers: {
       title: "מה הסיבה העיקרית שלפעמים אתם לא מבקשים עזרה?",
-      subtitle: "אפשר לבחור עד 2.",
+      subtitle: "אפשר לבחור עד 4.",
       options: {
         dont_know_trust: { label: "אני לא יודע על מי אפשר לסמוך" },
         too_expensive: { label: "זה יקר מדי" },

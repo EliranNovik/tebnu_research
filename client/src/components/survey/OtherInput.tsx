@@ -5,9 +5,10 @@ type OtherInputProps = {
   value: string;
   placeholder: string;
   onChange: (value: string) => void;
+  className?: string;
 };
 
-export function OtherInput({ value, placeholder, onChange }: OtherInputProps) {
+export function OtherInput({ value, placeholder, onChange, className }: OtherInputProps) {
   const ref = useRef<HTMLTextAreaElement>(null);
 
   useLayoutEffect(() => {
@@ -18,7 +19,7 @@ export function OtherInput({ value, placeholder, onChange }: OtherInputProps) {
   }, [value]);
 
   return (
-    <div className="ps-9">
+    <div className={cn("ps-9", className)}>
       <textarea
         ref={ref}
         value={value}

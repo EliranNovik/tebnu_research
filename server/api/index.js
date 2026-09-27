@@ -125,15 +125,19 @@ import { z } from "zod";
 
 // ../shared/types.ts
 var QUESTIONNAIRE_VERSION = "1.0";
+var SURVEY_LANGUAGES = ["en", "ru", "fr", "he"];
+function isSurveyLanguage(value) {
+  return value === "en" || value === "ru" || value === "fr" || value === "he";
+}
 
 // ../shared/questionnaire.ts
 var questionnaire = [
   {
     id: "categories",
     type: "multiple",
-    maxSelections: 3,
+    maxSelections: 6,
     title: "What kind of help would you actually use?",
-    subtitle: "Choose up to 3.",
+    subtitle: "Choose up to 6.",
     icon: "sparkles",
     layout: "compact",
     options: [
@@ -176,9 +180,9 @@ var questionnaire = [
   {
     id: "preferredDiscovery",
     type: "multiple",
-    maxSelections: 3,
+    maxSelections: 5,
     title: "If you needed help with something, how would you prefer to find the right person?",
-    subtitle: "Choose up to 3.",
+    subtitle: "Choose up to 5.",
     icon: "users",
     layout: "detailed",
     options: [
@@ -233,9 +237,9 @@ var questionnaire = [
   {
     id: "trustFactors",
     type: "multiple",
-    maxSelections: 3,
+    maxSelections: 4,
     title: "What would make you trust someone enough to hire them?",
-    subtitle: "Choose up to 3.",
+    subtitle: "Choose up to 4.",
     icon: "shield",
     layout: "compact",
     options: [
@@ -253,9 +257,9 @@ var questionnaire = [
   {
     id: "barriers",
     type: "multiple",
-    maxSelections: 2,
+    maxSelections: 4,
     title: "What is the biggest reason you sometimes don't ask someone for help?",
-    subtitle: "Choose up to 2.",
+    subtitle: "Choose up to 4.",
     icon: "help",
     layout: "compact",
     options: [
@@ -322,6 +326,7 @@ function validateQuestion(questionId, values, other) {
 }
 var surveySubmitSchema = z.object({
   questionnaireVersion: z.literal(QUESTIONNAIRE_VERSION),
+  language: z.enum(SURVEY_LANGUAGES).default("en"),
   answers: z.object({
     categories: z.array(z.string()),
     categoriesOther: z.string().max(OTHER_MAX).optional(),
@@ -350,6 +355,7 @@ var surveySubmitSchema = z.object({
   }
 }).transform((payload) => ({
   questionnaireVersion: payload.questionnaireVersion,
+  language: payload.language,
   answers: {
     ...payload.answers,
     categoriesOther: sanitizeOtherText(payload.answers.categoriesOther),
@@ -392,7 +398,7 @@ function rowToStored(row) {
     metadata: {
       submittedAt: row.submitted_at,
       questionnaireVersion: row.questionnaire_version,
-      language: "en",
+      language: isSurveyLanguage(row.language) ? row.language : "en",
       deviceType: row.device_type ?? void 0,
       userAgent: row.user_agent
     }
@@ -473,7 +479,7 @@ function toPublicDoc(doc) {
     metadata: {
       submittedAt: toIso(doc.metadata.submittedAt),
       questionnaireVersion: doc.metadata.questionnaireVersion,
-      language: "en",
+      language: doc.metadata.language,
       deviceType: doc.metadata.deviceType,
       userAgent: doc.metadata.userAgent ?? void 0
     }
@@ -732,7 +738,7 @@ async function saveSurveyResponse(input) {
       metadata: {
         submittedAt: /* @__PURE__ */ new Date(),
         questionnaireVersion: input.questionnaireVersion,
-        language: "en",
+        language: input.language,
         deviceType: deviceTypeFromUserAgent(input.userAgent),
         userAgent: input.userAgent?.slice(0, 300) ?? null
       }
@@ -743,7 +749,7 @@ async function saveSurveyResponse(input) {
   const { data, error } = await getSupabase().from("survey_responses").insert({
     answers,
     questionnaire_version: input.questionnaireVersion,
-    language: "en",
+    language: input.language,
     device_type: deviceTypeFromUserAgent(input.userAgent),
     user_agent: input.userAgent?.slice(0, 300) ?? null
   }).select("id").single();
@@ -787,6 +793,7 @@ async function submitSurvey(req, res) {
   const id = await saveSurveyResponse({
     answers: parsed.data.answers,
     questionnaireVersion: parsed.data.questionnaireVersion,
+    language: parsed.data.language,
     userAgent: typeof req.headers["user-agent"] === "string" ? req.headers["user-agent"] : void 0
   });
   res.status(201).json({ ok: true, id });

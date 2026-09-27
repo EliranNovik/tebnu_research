@@ -6,6 +6,7 @@ export const en = {
   submitting: "Submitting...",
   questionOf: "Question {current} of {total}",
   selected: "{count} selected",
+  selectedOf: "{count} of {max}",
   selectedMax: "{max} of {max} selected",
   pleaseChoose: "Please choose at least one answer.",
   otherPlaceholder: "Tell us more...",
@@ -66,7 +67,7 @@ export const en = {
   questions: {
     categories: {
       title: "What kind of help would you actually use?",
-      subtitle: "Choose up to 3.",
+      subtitle: "Choose up to 6.",
       options: {
         cleaning: { label: "Cleaning" },
         cooking: { label: "Cooking" },
@@ -103,7 +104,7 @@ export const en = {
     },
     preferredDiscovery: {
       title: "If you needed help with something, how would you prefer to find the right person?",
-      subtitle: "Choose up to 3.",
+      subtitle: "Choose up to 5.",
       options: {
         browse_yourself: {
           label: "Search and browse people yourself",
@@ -146,7 +147,7 @@ export const en = {
     },
     trustFactors: {
       title: "What would make you trust someone enough to hire them?",
-      subtitle: "Choose up to 3.",
+      subtitle: "Choose up to 4.",
       options: {
         reviews: { label: "Reviews" },
         verified_identity: { label: "Verified identity" },
@@ -161,7 +162,7 @@ export const en = {
     },
     barriers: {
       title: "What is the biggest reason you sometimes don't ask someone for help?",
-      subtitle: "Choose up to 2.",
+      subtitle: "Choose up to 4.",
       options: {
         dont_know_trust: { label: "I don't know who to trust" },
         too_expensive: { label: "It is too expensive" },

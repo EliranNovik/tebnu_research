@@ -8,6 +8,7 @@ export const ru: LocalePack = {
   submitting: "Отправка...",
   questionOf: "Вопрос {current} из {total}",
   selected: "Выбрано: {count}",
+  selectedOf: "{count} из {max}",
   selectedMax: "Выбрано {max} из {max}",
   pleaseChoose: "Выберите хотя бы один ответ.",
   otherPlaceholder: "Расскажите подробнее...",
@@ -67,7 +68,7 @@ export const ru: LocalePack = {
   questions: {
     categories: {
       title: "Какой помощью вы бы действительно пользовались?",
-      subtitle: "Выберите до 3.",
+      subtitle: "Выберите до 6.",
       options: {
         cleaning: { label: "Уборка" },
         cooking: { label: "Готовка" },
@@ -104,7 +105,7 @@ export const ru: LocalePack = {
     },
     preferredDiscovery: {
       title: "Если вам нужна помощь, как бы вы предпочли найти подходящего человека?",
-      subtitle: "Выберите до 3.",
+      subtitle: "Выберите до 5.",
       options: {
         browse_yourself: {
           label: "Самому искать и просматривать людей",
@@ -147,7 +148,7 @@ export const ru: LocalePack = {
     },
     trustFactors: {
       title: "Что заставило бы вас доверять человеку достаточно, чтобы нанять его?",
-      subtitle: "Выберите до 3.",
+      subtitle: "Выберите до 4.",
       options: {
         reviews: { label: "Отзывы" },
         verified_identity: { label: "Подтверждённая личность" },
@@ -162,7 +163,7 @@ export const ru: LocalePack = {
     },
     barriers: {
       title: "Какая главная причина, по которой вы иногда не просите о помощи?",
-      subtitle: "Выберите до 2.",
+      subtitle: "Выберите до 4.",
       options: {
         dont_know_trust: { label: "Я не знаю, кому можно доверять" },
         too_expensive: { label: "Это слишком дорого" },

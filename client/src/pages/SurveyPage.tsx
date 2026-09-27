@@ -2,6 +2,7 @@ import { AnswerCard } from "@/components/survey/AnswerCard";
 import { OtherInput } from "@/components/survey/OtherInput";
 import { QuestionLayout } from "@/components/survey/QuestionLayout";
 import { Button } from "@/components/ui/button";
+import { optionImage } from "@/data/categoryImages";
 import { QUESTION_FIELD_MAP, questionnaire } from "@/data/questionnaire";
 import { hasAnswer, useSurvey } from "@/hooks/useSurvey";
 import { fill, languageChoices, optionText, packFor, readLanguage, writeLanguage } from "@/locales";
@@ -99,10 +100,23 @@ export function SurveyPage() {
           max,
         })
       : undefined;
+  const chosenText = max
+    ? fill(copy.selectedOf, { count: selected.length, max })
+    : fill(copy.selected, { count: selected.length });
 
   return (
     <div className="survey-shell" lang={language ?? "en"} dir={rtl ? "rtl" : "ltr"}>
-      <div className="relative mx-auto flex min-h-svh w-full max-w-[760px] flex-col px-4 pb-36 pt-6 md:px-6 lg:max-w-6xl">
+      {stage === "questions" ? (
+        <p className="fixed top-[max(0.75rem,env(safe-area-inset-top))] left-1/2 z-30 -translate-x-1/2 rounded-full border border-white/15 bg-[#2B1468]/95 px-4 py-2 text-sm font-semibold text-white shadow-lg backdrop-blur-xl md:hidden">
+          {chosenText}
+        </p>
+      ) : null}
+      <div
+        className={cn(
+          "relative mx-auto flex min-h-svh w-full max-w-[760px] flex-col px-4 pb-36 md:px-6 lg:max-w-6xl",
+          stage === "questions" ? "pt-16 md:pt-6" : "pt-6",
+        )}
+      >
         {stage === "language" ? (
           <div className="question-enter mx-auto w-full max-w-3xl">
             <div className="mb-8 flex items-center gap-3">
@@ -148,27 +162,42 @@ export function SurveyPage() {
             <div
               className={
                 question.layout === "detailed"
-                  ? "grid auto-rows-fr items-stretch gap-3 md:grid-cols-2 xl:grid-cols-3"
-                  : "grid auto-rows-fr items-stretch gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+                  ? "grid items-start gap-3 md:auto-rows-fr md:grid-cols-2 md:items-stretch xl:grid-cols-3"
+                  : "grid items-start gap-3 sm:grid-cols-2 md:auto-rows-fr md:items-stretch lg:grid-cols-3 xl:grid-cols-4"
               }
             >
               {question.options.map((option) => {
                 const optionCopy = optionText(copy, question.id, option.value);
+                const showOther = Boolean(option.isOther && otherOption && selected.includes(otherOption.value));
                 return (
-                  <div key={option.value} className="h-full">
+                  <div key={option.value} className={cn("h-full", showOther && "max-md:h-auto")}>
                     <AnswerCard
                       label={optionCopy?.label ?? option.label}
                       description={optionCopy?.description}
                       selected={selected.includes(option.value)}
                       detailed={question.layout === "detailed"}
+                      image={optionImage(question.id, option.value)}
+                      extra={
+                        showOther ? (
+                          <OtherInput
+                            className="ps-0"
+                            value={otherText}
+                            placeholder={copy.otherPlaceholder}
+                            onChange={(value) => setOtherText(question.id, value)}
+                          />
+                        ) : undefined
+                      }
                       onToggle={() => {
                         const result = toggleOption(question.id, option.value);
-                        if (result.blocked && max) toast(fill(copy.maxToast, { max }));
+                        if (result.blocked && max) {
+                          const mobile = window.matchMedia("(max-width: 767px)").matches;
+                          toast(fill(copy.maxToast, { max }), mobile ? { position: "top-center" } : undefined);
+                        }
                         setShowError(false);
                       }}
                     />
-                    {option.isOther && otherOption && selected.includes(otherOption.value) ? (
-                      <div className="mt-3">
+                    {showOther ? (
+                      <div className="mt-3 hidden md:block">
                         <OtherInput
                           value={otherText}
                           placeholder={copy.otherPlaceholder}
