@@ -5,10 +5,11 @@ type ShareLinkButtonProps = {
   text: string;
   label: string;
   copiedLabel: string;
+  path?: string;
 };
 
-export function ShareLinkButton({ text, label, copiedLabel }: ShareLinkButtonProps) {
-  const { share, copied } = useShareSurvey(text);
+export function ShareLinkButton({ text, label, copiedLabel, path = "" }: ShareLinkButtonProps) {
+  const { share, copied } = useShareSurvey(text, path);
 
   return (
     <button

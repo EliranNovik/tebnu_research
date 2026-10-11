@@ -12,7 +12,7 @@ const contactEmail = "mailto:info@tebnu.com";
 export function ThankYouPage() {
   const language = readLanguage() ?? "en";
   const copy = packFor(language);
-  const { share, copied } = useShareSurvey(copy.shareText);
+  const { share, copied } = useShareSurvey(copy.shareText, `/${language}`);
 
   useEffect(() => {
     const previousLang = document.documentElement.lang;

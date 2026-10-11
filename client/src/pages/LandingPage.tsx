@@ -5,8 +5,9 @@ import { Button } from "@/components/ui/button";
 import { useSurveyLanguage } from "@/hooks/useSurveyLanguage";
 import { trackEvent } from "@/services/api";
 import { ArrowRight, ChartColumn, Clock, Lock, Shield, User, Users } from "lucide-react";
+import type { SurveyLanguage } from "@/types/survey";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const contactEmail = "mailto:info@tebnu.com";
 
@@ -43,9 +44,15 @@ function ResearchMark() {
   );
 }
 
-export function LandingPage() {
-  const { language, copy, selectLanguage } = useSurveyLanguage();
+export function LandingPage({ languageLock }: { languageLock?: SurveyLanguage }) {
+  const { language, copy, selectLanguage } = useSurveyLanguage(languageLock);
+  const navigate = useNavigate();
   const text = copy.landing;
+
+  function chooseLanguage(next: SurveyLanguage) {
+    selectLanguage(next);
+    if (languageLock) navigate(`/${next}`, { replace: true });
+  }
 
   useEffect(() => {
     void trackEvent("landing_view");
@@ -54,8 +61,8 @@ export function LandingPage() {
   return (
     <div className="survey-shell" lang={language} dir={language === "he" ? "rtl" : "ltr"}>
       <div dir="ltr" className="absolute top-5 right-5 z-30 flex items-center gap-2 md:top-6 md:right-10">
-        <ShareLinkButton text={copy.shareText} label={copy.share} copiedLabel={copy.linkCopied} />
-        <LanguageSwitcher value={language} onChange={selectLanguage} />
+        <ShareLinkButton text={copy.shareText} label={copy.share} copiedLabel={copy.linkCopied} path={`/${language}`} />
+        <LanguageSwitcher value={language} onChange={chooseLanguage} />
       </div>
       <div className="absolute top-5 left-5 z-30 flex items-center gap-2.5 md:top-6 md:left-10">
         <ResearchMark />
@@ -91,7 +98,7 @@ export function LandingPage() {
               asChild
               className="btn-primary btn-cta h-14 min-h-14 w-fit min-w-64 gap-2.5 !rounded-full px-14 text-lg font-semibold text-white"
             >
-              <Link to="/survey">
+              <Link to="/survey" state={languageLock ? { skipLanguage: true } : undefined}>
                 {text.getStarted}
                 <span className="inline-flex rtl:-scale-x-100">
                   <ArrowRight className="cta-arrow size-5" />

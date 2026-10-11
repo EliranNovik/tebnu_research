@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-export function useShareSurvey(text: string) {
+export function useShareSurvey(text: string, path = "") {
   const [copied, setCopied] = useState(false);
 
   async function share() {
-    const url = window.location.origin;
+    const url = `${window.location.origin}${path}`;
     const payload = { title: "Tebnu", text, url };
 
     if (typeof navigator.share === "function" && (navigator.canShare?.(payload) ?? true)) {

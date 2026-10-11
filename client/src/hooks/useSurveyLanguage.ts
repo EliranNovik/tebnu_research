@@ -2,8 +2,20 @@ import { packFor, readLanguage, writeLanguage } from "@/locales";
 import type { SurveyLanguage } from "@/types/survey";
 import { useEffect, useState } from "react";
 
-export function useSurveyLanguage() {
-  const [language, setLanguage] = useState<SurveyLanguage>(() => readLanguage() ?? "en");
+export function useSurveyLanguage(locked?: SurveyLanguage) {
+  const [language, setLanguage] = useState<SurveyLanguage>(() => {
+    if (locked) {
+      writeLanguage(locked);
+      return locked;
+    }
+    return readLanguage() ?? "en";
+  });
+
+  useEffect(() => {
+    if (!locked) return;
+    writeLanguage(locked);
+    setLanguage(locked);
+  }, [locked]);
 
   useEffect(() => {
     const previousLang = document.documentElement.lang;

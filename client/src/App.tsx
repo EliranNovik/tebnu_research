@@ -48,6 +48,10 @@ export default function App() {
         <Suspense fallback={<div className="flex min-h-svh items-center justify-center text-sm">Loading...</div>}>
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/en" element={<LandingPage languageLock="en" />} />
+            <Route path="/ru" element={<LandingPage languageLock="ru" />} />
+            <Route path="/fr" element={<LandingPage languageLock="fr" />} />
+            <Route path="/he" element={<LandingPage languageLock="he" />} />
             <Route path="/privacy" element={<PrivacyPage />} />
             <Route path="/research-purpose" element={<ResearchPurposePage />} />
             <Route path="/survey" element={<SurveyPage />} />

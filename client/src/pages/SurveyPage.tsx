@@ -11,12 +11,14 @@ import { submitSurvey, trackEvent } from "@/services/api";
 import type { SurveyLanguage } from "@/types/survey";
 import { Languages } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 export function SurveyPage() {
   const { answers, toggleOption, setOtherText } = useSurvey();
-  const [stage, setStage] = useState<"language" | "questions">("language");
+  const location = useLocation();
+  const skipLanguage = Boolean((location.state as { skipLanguage?: boolean } | null)?.skipLanguage && readLanguage());
+  const [stage, setStage] = useState<"language" | "questions">(skipLanguage ? "questions" : "language");
   const [language, setLanguage] = useState<SurveyLanguage | null>(() => readLanguage());
   const [step, setStep] = useState(0);
   const [showError, setShowError] = useState(false);
@@ -45,6 +47,12 @@ export function SurveyPage() {
       document.documentElement.dir = previousDir || "ltr";
     };
   }, [language, rtl]);
+
+  useEffect(() => {
+    if (stage !== "questions" || started.current) return;
+    started.current = true;
+    void trackEvent("survey_start");
+  }, [stage]);
 
   useEffect(() => {
     if (stage !== "questions") return;
