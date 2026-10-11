@@ -20,6 +20,7 @@ export const en = {
   contact: "Contact us",
   shareText: "Help us understand how people find everyday help.",
   landing: {
+    brand: "Everyday help research",
     eyebrow: "Anonymous research",
     headlineLead: "Help us understand",
     headlineMiddle: "how people find",

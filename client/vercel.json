@@ -1,5 +1,9 @@
 {
   "rewrites": [
+    { "source": "/en", "destination": "/en.html" },
+    { "source": "/ru", "destination": "/ru.html" },
+    { "source": "/fr", "destination": "/fr.html" },
+    { "source": "/he", "destination": "/he.html" },
     { "source": "/((?!api/).*)", "destination": "/index.html" }
   ]
 }

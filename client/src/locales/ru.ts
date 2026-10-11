@@ -22,6 +22,7 @@ export const ru: LocalePack = {
   contact: "Связаться с нами",
   shareText: "Помогите понять, как люди находят повседневную помощь.",
   landing: {
+    brand: "Исследование бытовой помощи",
     eyebrow: "Анонимное исследование",
     headlineLead: "Помогите понять,",
     headlineMiddle: "как люди находят",

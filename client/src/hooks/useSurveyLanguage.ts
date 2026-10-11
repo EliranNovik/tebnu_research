@@ -17,21 +17,24 @@ export function useSurveyLanguage(locked?: SurveyLanguage) {
     setLanguage(locked);
   }, [locked]);
 
+  const copy = packFor(language);
+
   useEffect(() => {
     const previousLang = document.documentElement.lang;
     const previousDir = document.documentElement.dir;
     document.documentElement.lang = language;
     document.documentElement.dir = language === "he" ? "rtl" : "ltr";
+    document.title = `${copy.landing.headlineLead} ${copy.landing.headlineMiddle} ${copy.landing.headlineAccent}`;
     return () => {
       document.documentElement.lang = previousLang || "en";
       document.documentElement.dir = previousDir || "ltr";
     };
-  }, [language]);
+  }, [language, copy]);
 
   function selectLanguage(next: SurveyLanguage) {
     setLanguage(next);
     writeLanguage(next);
   }
 
-  return { language, copy: packFor(language), selectLanguage };
+  return { language, copy, selectLanguage };
 }

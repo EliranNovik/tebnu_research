@@ -22,6 +22,7 @@ export const he: LocalePack = {
   contact: "צרו קשר",
   shareText: "עזרו לנו להבין איך אנשים מוצאים עזרה ביום־יום.",
   landing: {
+    brand: "מחקר עזרה ביום־יום",
     eyebrow: "מחקר אנונימי",
     headlineLead: "עזרו לנו להבין",
     headlineMiddle: "איך אנשים מוצאים",

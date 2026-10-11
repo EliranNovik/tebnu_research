@@ -22,6 +22,7 @@ export const fr: LocalePack = {
   contact: "Nous contacter",
   shareText: "Aidez-nous à comprendre comment les gens trouvent une aide du quotidien.",
   landing: {
+    brand: "Recherche sur l'aide du quotidien",
     eyebrow: "Recherche anonyme",
     headlineLead: "Aidez-nous à comprendre",
     headlineMiddle: "comment les gens trouvent",

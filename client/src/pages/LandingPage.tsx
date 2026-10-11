@@ -66,7 +66,7 @@ export function LandingPage({ languageLock }: { languageLock?: SurveyLanguage })
       </div>
       <div className="absolute top-5 left-5 z-30 flex items-center gap-2.5 md:top-6 md:left-10">
         <ResearchMark />
-        <p className="text-[12px] font-semibold tracking-[0.16em] text-[#C9BDE8] uppercase">Everyday help research</p>
+        <p className="text-[12px] font-semibold tracking-[0.16em] text-[#C9BDE8] uppercase">{text.brand}</p>
       </div>
       <div className="relative mx-auto flex min-h-svh w-full max-w-7xl flex-col justify-center px-5 pt-20 pb-20 md:px-10">
         <div className="relative z-10 grid items-center gap-10 lg:grid-cols-2">
