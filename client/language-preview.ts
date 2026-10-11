@@ -38,10 +38,19 @@ function escapeAttr(value: string) {
   return value.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
 }
 
+// WhatsApp aligns the preview from the string direction. These marks keep the Hebrew title and description on the right.
+const RTL_EMBED = "\u202B";
+const RTL_END = "\u202C";
+
+function previewCopy(value: string, dir: "ltr" | "rtl") {
+  const text = dir === "rtl" ? `${RTL_EMBED}${value}${RTL_END}` : value;
+  return escapeAttr(text);
+}
+
 export function applyLanguagePreview(html: string, code: keyof typeof previews) {
   const preview = previews[code];
-  const title = escapeAttr(preview.title);
-  const description = escapeAttr(preview.description);
+  const title = previewCopy(preview.title, preview.dir);
+  const description = previewCopy(preview.description, preview.dir);
   const image = `${SITE}/og-${code}.jpg`;
 
   return html
