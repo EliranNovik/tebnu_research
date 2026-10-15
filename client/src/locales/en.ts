@@ -19,6 +19,14 @@ export const en = {
   done: "Done",
   contact: "Contact us",
   shareText: "Help us understand how people find everyday help.",
+  tebnu: {
+    eyebrow: "Free beta",
+    title: "Try Tebnu",
+    body: "We are developing a new web app, and iOS and Android apps are coming soon. Tebnu is a community platform for finding help and helping others nearby, like babysitting or cleaning at home.",
+    beta: "It is in beta testing at the moment, and it is free. Register and try it out.",
+    checkOut: "Check out tebnu.com",
+    register: "Register",
+  },
   landing: {
     brand: "Everyday help research",
     eyebrow: "Anonymous research",

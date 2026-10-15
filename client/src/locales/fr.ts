@@ -21,6 +21,14 @@ export const fr: LocalePack = {
   done: "Terminé",
   contact: "Nous contacter",
   shareText: "Aidez-nous à comprendre comment les gens trouvent une aide du quotidien.",
+  tebnu: {
+    eyebrow: "Bêta gratuite",
+    title: "Essayez Tebnu",
+    body: "Nous développons une nouvelle application web, et les applications iOS et Android arrivent bientôt. Tebnu est une plateforme communautaire pour trouver de l'aide et aider les autres à proximité, comme la garde d'enfants ou le ménage à la maison.",
+    beta: "C'est en test bêta pour le moment, et c'est gratuit. Inscrivez-vous et essayez.",
+    checkOut: "Découvrir tebnu.com",
+    register: "S'inscrire",
+  },
   landing: {
     brand: "Recherche sur l'aide du quotidien",
     eyebrow: "Recherche anonyme",
